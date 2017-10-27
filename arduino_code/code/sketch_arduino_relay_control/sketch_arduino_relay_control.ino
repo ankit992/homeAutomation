@@ -8,10 +8,11 @@ int relay7 = 8;
 int relay8 = 9;
    
 char junk;
-String inputString="";              
+char inputInt;              
 
 void setup() {
-   Serial.begin(9600); 
+    Serial.begin(9600); 
+   Serial.println("Sketch arduino relay");
    pinMode(relay1, OUTPUT);
    pinMode(relay2, OUTPUT);
    pinMode(relay3, OUTPUT);
@@ -23,32 +24,33 @@ void setup() {
 }
 
 void loop() {
+
    if(Serial.available()){
   while(Serial.available())
     {
       char inChar = (char)Serial.read(); //read the input
-      inputString += inChar;        //make a string of the characters coming on serial
+      inputInt = inChar;        //make a string of the characters coming on serial
     }
-    Serial.println(inputString);
-    while (Serial.available() > 0)  
-    { junk = Serial.read() ; }      // clear the serial buffer
-    if(inputString == "1o"){ digitalWrite(relay1, HIGH);}
-    else if(inputString == "1f"){ digitalWrite(relay1, LOW);}
-    else if(inputString == "2o"){ digitalWrite(relay2, HIGH);}
-    else if(inputString == "2f"){ digitalWrite(relay2, LOW);}
-    else if(inputString == "3o"){ digitalWrite(relay3, HIGH);}
-    else if(inputString == "3f"){ digitalWrite(relay3, LOW);}
-    else if(inputString == "4o"){ digitalWrite(relay4, HIGH);}
-    else if(inputString == "4f"){ digitalWrite(relay4, LOW);}
-    else if(inputString == "5o"){ digitalWrite(relay5, HIGH);}
-    else if(inputString == "5f"){ digitalWrite(relay5, LOW);}
-    else if(inputString == "6o"){ digitalWrite(relay6, HIGH);}
-    else if(inputString == "6f"){ digitalWrite(relay6, LOW);}
-    else if(inputString == "7o"){ digitalWrite(relay7, HIGH);}
-    else if(inputString == "7f"){ digitalWrite(relay7, LOW);}
-    else if(inputString == "8o"){ digitalWrite(relay8, HIGH);}
-    else if(inputString == "8f"){ digitalWrite(relay8, LOW);}
+    Serial.println("dumbo moti");
+    Serial.println(inputInt);
+    Serial.println("dumbo moti");
+    if(inputInt == '1'){ digitalWrite(relay1, HIGH);}
+    else if(inputInt == '2'){ digitalWrite(relay1, LOW);}
+    else if(inputInt == '3'){ digitalWrite(relay2, HIGH);}
+    else if(inputInt == '4'){ digitalWrite(relay2, LOW);}
+    else if(inputInt =='5'){ digitalWrite(relay3, HIGH);}
+    else if(inputInt == '6'){ digitalWrite(relay3, LOW);}
+    else if(inputInt == '7'){ digitalWrite(relay4, HIGH);}
+    else if(inputInt == '8'){ digitalWrite(relay4, LOW);}
+    else if(inputInt == '9'){ digitalWrite(relay5, HIGH);}
+    else if(inputInt == 'a'){ digitalWrite(relay5, LOW);}
+    else if(inputInt == 'b'){ digitalWrite(relay6, HIGH);}
+    else if(inputInt == 'c'){ digitalWrite(relay6, LOW);}
+    else if(inputInt == 'd'){ digitalWrite(relay7, HIGH);}
+    else if(inputInt == 'e'){ digitalWrite(relay7, LOW);}
+    else if(inputInt == 'f'){ digitalWrite(relay8, HIGH);}
+    else if(inputInt == 'g'){ digitalWrite(relay8, LOW);}
     }
-    inputString = "";              \
+    inputInt = 0;              \
 }
 
